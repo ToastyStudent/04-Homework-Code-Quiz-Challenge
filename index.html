@@ -4,42 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Coding Quiz</title>
+    <title>Coding Quiz Challenge</title>
 
     <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
 
   <body>
-    <div class="scores"><a href="highscores.html">View Highscores</a></div>
+    <div class="highscores"><a href="highscores.html">View Highscores</a></div>
 
     <div class="timer">Time: <span id="time">0</span></div>
 
-    <div class="wrapper">
+    <div class="quiz-container">
+      
+      <!-- HTML Displayed Before Starting the Quiz -->
       <div id="start-screen" class="start">
         <h1>Coding Quiz Challenge</h1>
         <p>
-          Try to answer the following code-related questions within the time
-          limit. Keep in mind that incorrect answers will penalize your
-          score/time by 15 seconds!
+          Do your best to answer the following code-related questions within the 
+          time limit which will decrease by 15 seconds 
+          for each incorrect answer!
         </p>
-        <button id="start">Start Quiz</button>
+        <button id="start-button">Start Quiz</button>
       </div>
 
-      <div id="questions" class="hide">
+      <!-- HTML Displayed During the Quiz -->
+      <div id="questions" class="hidden">
         <h2 id="question-title"></h2>
-        <div id="choices" class="choices"></div>
+        <div id="answers" class="answers"></div>
       </div>
 
-      <div id="end-screen" class="hide">
+      <!-- HTML Displayed After the Quiz has been Completed-->
+      <div id="end-screen" class="hidden">
         <h2>All done!</h2>
         <p>Your final score is <span id="final-score"></span>.</p>
         <p>
           Enter initials: <input type="text" id="initials" max="3" />
-          <button id="submit">Submit</button>
+          <button id="submit-button">Submit</button>
         </p>
       </div>
 
-      <div id="feedback" class="feedback hide"></div>
     </div>
 
     <script src="./assets/js/questions.js"></script>
