@@ -54,7 +54,7 @@ function getQuestion() {
 
     answerSelector.textContent = i + 1 + '. ' + answer;
 
-    // display on the page
+    // Display the Newly Created Button on The page
     choicesElement.appendChild(answerSelector);
   }
 }
