@@ -12,10 +12,9 @@
   <body>
     <div class="score-list"><a href="highscores.html">View Highscores</a></div>
 
-    <div class="timer">Time: <span id="seconds-remaining">0</span></div>
+    <div class="timeremaining">Time: <span id="time">0</span></div>
 
     <div class="quiz-container">
-      
       <!-- HTML Displayed Before Starting the Quiz -->
       <div id="start-screen" class="start">
         <h1>Coding Quiz Challenge</h1>
@@ -43,6 +42,7 @@
         </p>
       </div>
 
+      <div id="feedback-container" class="feedback hidden"></div>
     </div>
 
     <script src="./assets/js/questions.js"></script>
