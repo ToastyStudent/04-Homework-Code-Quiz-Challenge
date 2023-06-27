@@ -40,7 +40,7 @@ function getQuestion() {
   // Update Question Title with  that of the Current Question
   titleElement.textContent = currentQuestion.title;
 
-  // Clear Out Any Old Question Choices by Setting them to an Empty String
+  // Clear Out Any Old Question Answers by Setting them to an Empty String
   answersElement.innerHTML = '';
 
   // Loop over the Answer Choices
@@ -69,7 +69,7 @@ function questionClick(event) {
   }
 
   // Check to See if User Answered Incorrectly
-  if (buttonElelement.value !== questions[currentQuestionIndex].answer) {
+  if (buttonElelement.value !== questions[currentQuestionIndex].correctansweranswer) {
     // Penalize User by Decreasing Time Remaining
     timeremaining -= 15;
 
@@ -172,16 +172,16 @@ function checkForEnter(event) {
 // Button Element References
 
 // Upon Clicking the Submit Button, the User Submits Their Initials
-submitBtn.onclick = saveHighscore;
+submitButton.onclick = saveHighscore;
 
 // Upon Presseing the Enter Key, the User Submits Their Initials
-initialsEl.onkeyup = checkForEnter;
+initialsElement.onkeyup = checkForEnter;
 
 // Upon Clicking the Start Button, the User Begins the Quiz
-startBtn.onclick = startQuiz;
+startButton.onclick = startQuiz;
 
 // Upon Clicking an Answer Choice, the Answer is Evaluated as 
 // Correct or Incorrect
-choicesEl.onclick = questionClick;
+answersElement.onclick = questionClick;
 
 
