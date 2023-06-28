@@ -14,7 +14,7 @@ Said interaction/usage would involve simply taking the quiz by answering questio
 https://github.com/ToastyStudent/04-Homework-Code-Quiz-Challenge
 
 # Screenshot of Deployed Application
-[A screenshot of the Deployed Application](./assets/03-Homework%20Screenshot.png)
+[A screenshot of the Deployed Application](./assets/images/04-Homework-Screenshot.png)
 
 # Credits
 This entire project was built using code provided by Northwestern University's Full-stack Development Coding Bootcamp TAs from the following repository:
