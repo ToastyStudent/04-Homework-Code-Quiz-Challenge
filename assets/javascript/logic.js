@@ -1,20 +1,20 @@
 // Variables to keep track of the state of the quiz
 var currentQuestionNumber = 0;
-var timeremaining = questions.length * 15;
+var timeleft = questions.length * 15;
 var timerId;
 
 // Variables referencing DOM elements
 var questionsElement = document.getElementById('questions');
-var timerElement = document.getElementById('timer');
+var timerElement = document.getElementById('time');
 var answersElement = document.getElementById('answers');
-var submitButton = document.getElementById('submit');
+var submitButton = document.getElementById('submit-button');
 var startButton = document.getElementById('start-button');
 var startScreenElement = document.getElementById('start-screen');
 var titleElement = document.getElementById('question-title');
 var initialsElement = document.getElementById('initials');
 var feedbackElement = document.getElementById('feedback-container');
 var endScreenElement = document.getElementById('end-screen');
-var finalScoreElelement = document.getElementById('final-score');
+var finalScoreElement = document.getElementById('final-score');
 
 function startQuiz() {
   // Hide Start Screen
@@ -27,7 +27,7 @@ function startQuiz() {
   timerId = setInterval(clockTick, 900);
 
   // Display Starting Time
-  timerEl.textContent = timeremaining;
+  timerElement.textContent = timeleft;
 
   getQuestion();
 }
@@ -35,7 +35,7 @@ function startQuiz() {
 // Function to Display Each New Quiz Question
 function getQuestion() {
   // Get Current Question Object from Array of Questions
-  var currentQuestion = questions[currentQuestionIndex];
+  var currentQuestion = questions[currentQuestionNumber];
 
   // Update Question Title with  that of the Current Question
   titleElement.textContent = currentQuestion.title;
@@ -55,7 +55,7 @@ function getQuestion() {
     answerSelector.textContent = i + 1 + '. ' + answer;
 
     // Display the Newly Created Button on The page
-    choicesElement.appendChild(answerSelector);
+    answersElement.appendChild(answerSelector);
   }
 }
 
@@ -69,16 +69,16 @@ function questionClick(event) {
   }
 
   // Check to See if User Answered Incorrectly
-  if (buttonElelement.value !== questions[currentQuestionIndex].correctansweranswer) {
+  if (buttonElelement.value !== questions[currentQuestionNumber].correctanswer) {
     // Penalize User by Decreasing Time Remaining
-    timeremaining -= 15;
+    timeleft -= 15;
 
-    if (timeremaining < 0) {
-      timeremaining = 0;
+    if (timeleft < 0) {
+      timeleft = 0;
     }
 
     // Display New Time on Page
-    timerElement.textContent = timeremaining;
+    timerElement.textContent = timeleft;
 
     // Display Whether the User Answered Correctly or Incorrectly
     feedbackElement.textContent = 'Incorrect!';
@@ -94,10 +94,10 @@ function questionClick(event) {
   }, 1000);
 
   // Move to Next Question via Iteration
-  currentQuestionIndex++;
+  currentQuestionNumber++;
 
   // Check to Determine if Loop through all Questions is Complete
-  if (timeremaining <= 0 || currentQuestionIndex === questions.length) {
+  if (timeleft <= 0 || currentQuestionNumber === questions.length) {
     quizEnd();
   } else {
     getQuestion();
@@ -113,28 +113,30 @@ function quizEnd() {
   endScreenElement.removeAttribute('class');
 
   // Display the User's Final Score
-  finalScoreElelement.textContent = timeremaining;
+  finalScoreElement.textContent = timeleft;
 
   // Hide the Questions Section
-  questionsEl.setAttribute('class', 'hidden');
+  questionsElement.setAttribute('class', 'hidden');
 }
 
 // Function Used to Have the Timer Count Down/End the Quiz if it Reaches 0
 function clockTick() {
   // Update the Time Remaining
-  timeremaining--;
-  timerElement.textContent = timeremaining;
+  timeleft--;
+  timerElement.textContent = timeleft;
 
   // Check to Determine if the Time has Expired
-  if (timeremaining <= 0) {
+  if (timeleft <= 0) {
     quizEnd();
   }
 }
 
 // Function to Save the User's High Score to Local Storage
 function saveHighscore() {
+  console.log('saveHighscore');
+
   // Obtain the value of "Intials" Input Field
-  var initials = initialsEl.value.trim();
+  var initials = initialsElement.value.trim();
 
   // Check to Determine the Input Field Wasn't Empty
   if (initials !== '') {
@@ -146,7 +148,7 @@ function saveHighscore() {
 
     // Create and Format a New Score Object for the Current User
     var newScore = {
-      score: timeremaining,
+      score: timeleft,
       initials: initials,
     };
 
