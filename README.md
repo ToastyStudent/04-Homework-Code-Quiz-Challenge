@@ -11,7 +11,7 @@ No installation is required. One only needs to visit the deployed github pages p
 Said interaction/usage would involve simply taking the quiz by answering questions via buttons before saving your highscore. Additionally, you can 
 
 # Link to Deployed Application
-https://github.com/ToastyStudent/04-Homework-Code-Quiz-Challenge
+https://toastystudent.github.io/04-Homework-Code-Quiz-Challenge/
 
 # Screenshot of Deployed Application
 [A screenshot of the Deployed Application](./assets/images/04-Homework-Screenshot.png)
